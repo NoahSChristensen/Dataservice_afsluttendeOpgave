@@ -29,7 +29,9 @@ const ViborgHsAboutUs = () => {
                  <div className="flex flex-col gap-4">
                     {parse(data.content)}
                  </div>
-                 <NavLink to={"/ViborgsAnmeldelser"}>Reviews!</NavLink>
+                 <div className="w[100%] m-auto">
+                  <NavLink to={"/ViborgsAnmeldelser"}>Reviews!</NavLink>
+                 </div>
             </article>
         }
 
