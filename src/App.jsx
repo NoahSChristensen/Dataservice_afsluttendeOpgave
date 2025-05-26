@@ -1,7 +1,8 @@
 import "./App.css" // Importere Tailwind css
 import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./layout/Layout"
-import Viborghaveservice from "./Pages/Viborghaveservice";
+import Viborghaveservice from "./Pages/ViborgHS/Viborghaveservice";
+import ViborgsHsReviews from "./Pages/ViborgHS/ViborgsHsReviews";
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
                 <Route path="/" element={<Layout></Layout>}>
 
                     <Route path="viborghaveservice" element={<Viborghaveservice></Viborghaveservice>}></Route>
+
+                    <Route path="ViborgsAnmeldelser" element={<ViborgsHsReviews></ViborgsHsReviews>}></Route>
 
                 </Route>
             </Routes>

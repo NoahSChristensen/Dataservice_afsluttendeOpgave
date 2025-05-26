@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="container mx-auto">
       <section className="flex items-center justify-between">
         {/* Logo */}
-        <div className="mx-4 font-semibold text-emerald-900">ReactApp A/S</div>
+        <NavLink to={"/"} className="mx-4 font-semibold text-emerald-900">ReactApp A/S</NavLink>
 
         {/* Burger menu button - visible only on mobile */}
         <button
