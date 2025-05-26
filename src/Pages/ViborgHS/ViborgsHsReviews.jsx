@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useRequestData from "../../hooks/useRequestData";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ViborgsHsReviews = () => {
   const { makeRequest, loading, data, error } = useRequestData();
@@ -28,15 +29,26 @@ const ViborgsHsReviews = () => {
         {/* Show selected review */}
         <div className="flex flex-col">
           {data && data[sliderIndex] && (
-            <article className="rounded p-6">
-              <p className="text-lg">{data[sliderIndex].content}</p>
-              <h2> {data[sliderIndex].author} </h2>
-            </article>
+            <AnimatePresence mode="wait"> 
+              <motion.div
+                key={sliderIndex}
+                initial={{ x: 300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -300, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute w-full"
+              >
+                <article className="rounded p-6">
+                  <p className="text-lg">{data[sliderIndex].content}</p>
+                  <h2> {data[sliderIndex].author} </h2>
+                </article>
+              </motion.div>
+            </AnimatePresence>
           )}
         </div>
 
         {/* Knapper til at skifte anmeldelse */}
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex justify-center gap-4 mt-50">
           {data &&
             data.map((_, index) => (
               <button
