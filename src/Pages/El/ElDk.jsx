@@ -29,7 +29,7 @@ const ElDk = () => {
   console.log(data);
 
   return (
-    <section className="p-4">
+    <section className="p-4 mt-25">
       {/* Ændre område til dk1 eller dk2 i URL'en */}
       <form className="grid grid-cols-3">
         <input
@@ -41,7 +41,7 @@ const ElDk = () => {
           type="text"
           placeholder="Søg her..."
         />
-        <button type="submit" onClick={handleSearch}>
+        <button className="bg-gray-400 w-25 mx-auto rounded-full text-white fontFamily hover:cursor-pointer hover:text-[1.1rem]" type="submit" onClick={handleSearch}>
           Søg her
         </button>
         {/* Kan vælge start og slutdato for at se elpriser: */}

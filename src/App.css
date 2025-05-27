@@ -28,4 +28,10 @@
     font-family: "Lato", sans-serif;
 }
 
+.bg_image {
+    background-image: url('http://localhost:5023/images/01small.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 

@@ -15,10 +15,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 container mx-auto flex h-16 items-center justify-between bg-green-500/90 px-4 shadow-md">
+    <nav className="fontFamily fixed top-0 right-0 left-0 z-50 flex h-16 w-full items-center justify-between bg-green-500/90 px-4 shadow-md">
       {/* Logo at the start */}
       <div className="flex items-center">
-        <NavLink to={"/"} className="whiteText mx-4 font-semibold">
+        <NavLink to={"/"} className="whiteText mx-4 font-semibold text-3xl">
           ReactApp A/S
         </NavLink>
       </div>
@@ -28,16 +28,25 @@ const Navbar = () => {
         {/* Burger menu button - visible only on mobile */}
         <button
           onClick={() => setDropDown(!dropDown)}
-          className="text-gray-800 focus:outline-none lg:hidden p-4 md:p-20"
+          className="p-4 text-gray-800 focus:outline-none md:p-20 lg:hidden"
         >
           <GiHamburger className="text-4xl text-white" title="Burger Menu" />
         </button>
 
         {/* Desktop Menu */}
-        <menu className="hidden text-amber-50 sm:gap-9 lg:flex">
+        <menu className="hidde capitalize sm:gap-9 lg:flex">
           {menuItems.map((item) => (
-            <li className="list-none text-blue-500" key={item.name}>
-              <NavLink to={item.path}>{item.name}</NavLink>
+            <li className="whiteText list-none p-2 text-2xl" key={item.name}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white underline underline-offset-4"
+                    : "text-gray-200 hover:text-white"
+                }
+                to={item.path}
+              >
+                {item.name}
+              </NavLink>
             </li>
           ))}
         </menu>
