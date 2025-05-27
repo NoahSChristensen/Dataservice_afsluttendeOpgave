@@ -7,7 +7,9 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "home", path: "/" },
-    { name: "Viborghaveservice", path: "viborghaveservice" }
+    { name: "Viborghaveservice", path: "viborghaveservice" },
+    {name: "openWeather", path: "openweather"},
+    {name:"admin", path: "/admin" }
   ]
 
   return (

@@ -9,8 +9,6 @@ const ViborgsHsReviews = () => {
     makeRequest(`http://localhost:5023/reviews`);
   }, []);
 
-  console.log(data);
-
   const [sliderIndex, setSliderIndex] = useState(0);
 
   const handleClick = (index) => {
@@ -25,22 +23,24 @@ const ViborgsHsReviews = () => {
         <div className="mx-auto h-1 w-25 bg-amber-900"></div>
       </section>
 
-      <section className="border p-4">
+      <section className="border p-4 text-center">
         {/* Show selected review */}
-        <div className="flex flex-col">
+        <div className="relative flex flex-col">
           {data && data[sliderIndex] && (
-            <AnimatePresence mode="wait"> 
+            <AnimatePresence mode="wait">
               <motion.div
                 key={sliderIndex}
                 initial={{ x: 300, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -300, opacity: 0 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.314 }}
                 className="absolute w-full"
               >
-                <article className="rounded p-6">
-                  <p className="text-lg">{data[sliderIndex].content}</p>
-                  <h2> {data[sliderIndex].author} </h2>
+                <article className="flex flex-col gap-10 rounded p-6">
+                  <p className="prose-lg text-lg italic">
+                    "{data[sliderIndex].content}"
+                  </p>
+                  <h2> -{data[sliderIndex].author} </h2>
                 </article>
               </motion.div>
             </AnimatePresence>
@@ -48,7 +48,7 @@ const ViborgsHsReviews = () => {
         </div>
 
         {/* Knapper til at skifte anmeldelse */}
-        <div className="flex justify-center gap-4 mt-50">
+        <div className="mt-50 flex justify-center gap-4">
           {data &&
             data.map((_, index) => (
               <button

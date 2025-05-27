@@ -1,0 +1,33 @@
+/* Table */
+table {
+    border-collapse: collapse;
+}
+
+table caption {
+    font-size: 3.5em;
+    margin: 10px;
+}
+
+table thead tr th {
+    background-color: #d0d0d0;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #a0a0a0;
+    font-size: 1em;
+}
+
+table tr:nth-child(even) {
+    background: #f0f0f0;
+    padding: 10px;
+}
+
+table tr:nth-child(odd) {
+    background: #fff;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Let mørkere ved hover */
+}

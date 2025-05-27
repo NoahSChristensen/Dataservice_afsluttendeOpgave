@@ -1,0 +1,18 @@
+/* Form */
+form input, form textarea {
+    border: 1px solid gray;
+    padding: 5px;
+    display: block;
+    clear: both;
+}
+
+label {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: 40px 0;
+    display: block;
+}
+
+.form-item {
+    margin: 40px 0;
+}
