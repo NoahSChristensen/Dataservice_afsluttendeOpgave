@@ -29,7 +29,7 @@ console.log(selected); // Shows 2 random items
 
     
   return (
-    <main className="grid grid-cols-2 p-5">
+    <main className="grid sm:grid-cols-1 md:grid-cols-2 p-5 bg-gray-100 mt-10">
         
         {loading && <Loader></Loader>}
         {error && <Error></Error>}

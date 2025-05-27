@@ -15,11 +15,11 @@ const ViborgsHsYdelser = ({ data }) => {
         selected.map((item) => (
           <div key={item._id}>
             <figure className="flex flex-col gap-4">
-              <img src={`/ydelser/${item.image}`} alt={item.title} />
+              <img className="w-100" src={`/ydelser/${item.image}`} alt={item.title} />
               {console.log(`/ydelser/${item.image}`)}
-              <figcaption>
+              <figcaption className="flex flex-col items-center">
                 <h2 className="text-2xl font-semibold">{item.title}</h2>
-                <p className="text-gray-700 p-4 mt-4">{item.content}</p>
+                <p className="text-gray-400 p-4 mt-4 ">{item.content}</p>
               </figcaption>
             </figure>
           </div>
