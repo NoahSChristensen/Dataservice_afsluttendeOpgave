@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: "Viborghaveservice", path: "viborghaveservice" },
     { name: "openWeather", path: "openweather" },
     { name: "El Priser", path: "eldk" },
+    { name: "Coffee", path: "coffee" },
     { name: "admin", path: "/admin" },
   ];
 
@@ -18,8 +19,8 @@ const Navbar = () => {
     <nav className="fontFamily fixed top-0 right-0 left-0 z-50 flex h-16 w-full items-center justify-between bg-green-500/90 px-4 shadow-md">
       {/* Logo at the start */}
       <div className="flex items-center">
-        <NavLink to={"/"} className="whiteText mx-4 font-semibold text-3xl">
-          ReactApp A/S
+        <NavLink to={"/"} className="whiteText mx-4 font-semibold text-3xl capitalize">
+          ViborgHaveservice | A/S
         </NavLink>
       </div>
 
@@ -34,7 +35,7 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Menu */}
-        <menu className="hidde capitalize sm:gap-9 lg:flex">
+        <menu className="hidden capitalize sm:gap-9 lg:flex">
           {menuItems.map((item) => (
             <li className="whiteText list-none p-2 text-2xl" key={item.name}>
               <NavLink

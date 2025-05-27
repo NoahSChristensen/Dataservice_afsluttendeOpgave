@@ -9,6 +9,7 @@ import CreateReview from "./Pages/admin/ViborgHsAdmin/CreateReview";
 import EditDelReview from "./Pages/admin/ViborgHsAdmin/EditDelReview";
 import ReviewEdit from "./Pages/admin/ViborgHsAdmin/ReviewEdit";
 import ElDk from "./Pages/El/ElDk";
+import Coffee from "./Pages/MyAPI/Coffee";
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
                     <Route path="openweather" element={<Openweather></Openweather>}></Route>
 
                     <Route path="eldk" element={<ElDk></ElDk>}></Route>
+
+                    <Route path="coffee" element={<Coffee></Coffee>}></Route>
 
                 </Route>
                 {/* admin */}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useRequestData from "../../hooks/useRequestData";
 import LeafletMap from "./LeafletMap";
+import Loader from "../../components/Loader";
+import Error from "../../components/Error";
 
 const Openweather = () => {
   const { makeRequest, loading, data, error } = useRequestData();
@@ -13,14 +15,14 @@ const Openweather = () => {
 
   useEffect(() => {
     makeRequest(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`,
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`,
     );
   }, [lat, lon]);
 
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
     const geoRes = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=1&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=1&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`,
     );
 
     const geoData = await geoRes.json();
@@ -65,10 +67,9 @@ const Openweather = () => {
         </div>
       </form>
 
-
       {/* Viser navnet på byen, hvis der er data: */}
       {data && (
-        <h1 className="text-4xl font-semibold capitalize mt-4 mb-10">
+        <h1 className="mt-4 mb-10 text-4xl font-semibold capitalize">
           Weather forecast for: {data.city.name}
         </h1>
       )}
@@ -77,7 +78,10 @@ const Openweather = () => {
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-8">
         {data &&
           data.list.slice(0, 8).map((item, index) => (
-            <div key={index} className="my-2 rounded-lg border p-2 text-center bg-gray-400/50">
+            <div
+              key={index}
+              className="my-2 rounded-lg border bg-gray-400/50 p-2 text-center"
+            >
               <h2 className="font-bold">
                 kl.{" "}
                 {new Date(item.dt * 1000).toLocaleString([], {
@@ -86,9 +90,13 @@ const Openweather = () => {
                   hour12: false,
                 })}
               </h2>
-              <p>{item.weather[0].description}</p>
-              <p>Temperature: {Math.round(item.main.temp - 273.15)}°C</p>
-              <img className="mx-auto"
+              <div className="flex flex-col items-center gap-4 mt-4">
+                <p>{item.weather[0].description}</p>
+                <p>Temperature: {Math.round(item.main.temp)}°C</p>
+                <p>Feels like: {Math.round(item.main.feels_like)}°C</p>
+              </div>
+              <img
+                className="mx-auto"
                 src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png`}
                 alt="Vejrikon"
               />
@@ -98,7 +106,9 @@ const Openweather = () => {
 
       {/* LeafletMap */}
       <div className="my-10 rounded-2xl border p-5">
-        {data && (
+        {loading ? (
+          <Loader />
+        ) : data ? (
           <LeafletMap
             lat={lat}
             lon={lon}
@@ -106,11 +116,11 @@ const Openweather = () => {
             weather={
               data.list[0].weather[0].description +
               " - " +
-              Math.round(data.list[0].main.temp - 273.15) +
+              Math.round(data.list[0].main.temp) +
               "°C"
             }
           />
-        )}
+        ) : null}
       </div>
     </section>
   );

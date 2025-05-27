@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
       <main className="container mx-auto flex-1 bg-gray-50 px-4">
         <Outlet></Outlet>
       </main>
+      <Footer></Footer>
     </div>
   )
 }
