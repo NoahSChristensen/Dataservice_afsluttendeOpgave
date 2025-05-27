@@ -2,9 +2,10 @@ import useRequestData from "../../hooks/useRequestData";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
+
 const Coffee = () => {
   const { makeRequest, loading, data, error } = useRequestData();
-  const [visibleCount, setVisibleCount] = useState(15);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
     makeRequest(`https://api.sampleapis.com/coffee/hot`);
@@ -36,32 +37,30 @@ const Coffee = () => {
 
   return (
     <section className="mt-20 grid w-full grid-cols-1 gap-4 p-4 lg:grid-cols-3">
-        {loading && <Loader />}
-        {error && <Error />}
-        <title>{`${import.meta.env.VITE_BASE_DOCTITLE} Coffee`}</title>
+      {loading && <Loader />}
+      {error && <Error />}
+      <title>{`${import.meta.env.VITE_BASE_DOCTITLE} Coffee`}</title>
       {data &&
         data.slice(0, visibleCount).map((coffee) => (
           <div
             key={coffee.id}
-            className="flex flex-col justify-between border rounded-2xl bg-amber-700/90 text-amber-400 p-4"
+            className="rounded-2 h-min-[400px] relative flex h-[500px] flex-col justify-between border bg-cover bg-center p-4"
+            style={{ backgroundImage: `url(${coffee.image})` }}
           >
-            <h1 className="text-4xl">{coffee.title}</h1>
-            <h2>Ingredients:</h2>
-            <div className="mt-4 mb-4">
-              {coffee.ingredients.map((i, index) => (
-                <ul key={index} className="list-disc pl-5">
-                  <li>{i}</li>
-                </ul>
-              ))}
+            <div className="pointer-events-none absolute inset-0 bg-amber-800/40"></div>
+
+            <div className="text-white z-10 flex flex-col justify-between gap-4">
+              <h1 className="text-4xl">{coffee.title}</h1>
+              <h2>Ingredients:</h2>
+              <div className="mt-4 mb-4">
+                {coffee.ingredients.map((i, index) => (
+                  <ul key={index} className="list-disc pl-5">
+                    <li>{i}</li>
+                  </ul>
+                ))}
+                <p>{coffee.description}</p>
+              </div>
             </div>
-            <p>{coffee.description}</p>
-            <figure>
-              <img
-                className="mx-auto mt-5 h-10/12"
-                src={coffee.image}
-                alt={coffee.title}
-              />
-            </figure>
 
             <a
               href="https://sampleapis.com/api-list/coffee"
