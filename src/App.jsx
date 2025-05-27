@@ -8,6 +8,7 @@ import LayoutAdmin from "./layout/admin/LayoutAdmin";
 import CreateReview from "./Pages/admin/ViborgHsAdmin/CreateReview";
 import EditDelReview from "./Pages/admin/ViborgHsAdmin/EditDelReview";
 import ReviewEdit from "./Pages/admin/ViborgHsAdmin/ReviewEdit";
+import ElDk from "./Pages/El/ElDk";
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
                     <Route path="ViborgsAnmeldelser" element={<ViborgsHsReviews></ViborgsHsReviews>}></Route>
 
                     <Route path="openweather" element={<Openweather></Openweather>}></Route>
+
+                    <Route path="eldk" element={<ElDk></ElDk>}></Route>
 
                 </Route>
                 {/* admin */}
