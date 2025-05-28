@@ -1,6 +1,7 @@
 import useRequestData from "../../../hooks/useRequestData";
 import { useEffect } from "react";
 import { Link } from "react-router";
+import { NavLink } from "react-router";
 import "../../../assets/forms.css";
 import "../../../assets/table.css";
 
@@ -54,13 +55,13 @@ const EditDelREview = () => {
                   <td className="text-center">{d.author}</td>
                   <td> {d.content} </td>
                   <td>
-                    <Link
+                    <NavLink
                       className="mx-2 rounded bg-blue-500 p-2 text-center text-white hover:cursor-pointer"
                       state={{ d: d }}
                       to={`/admin/EditReview/${d._id}`}
                     >
                       Edit
-                    </Link>
+                    </NavLink>
                   </td>
                   <td className="text-center">
                     <button

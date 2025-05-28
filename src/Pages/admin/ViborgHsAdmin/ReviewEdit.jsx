@@ -28,7 +28,7 @@ const ReviewEdit = () => {
 
   //   Submit request
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault(); 
     console.log("Review edited!");
     const popUp = window.confirm("Do you want to edit this review?");
     if (!popUp) return;
