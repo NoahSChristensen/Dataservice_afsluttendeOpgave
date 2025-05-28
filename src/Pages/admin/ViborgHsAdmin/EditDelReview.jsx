@@ -57,7 +57,7 @@ const EditDelREview = () => {
                     <Link
                       className="mx-2 rounded bg-blue-500 p-2 text-center text-white hover:cursor-pointer"
                       state={{ d: d }}
-                      to={`/admin/EditRev/${d._id}`}
+                      to={`/admin/EditReview/${d._id}`}
                     >
                       Edit
                     </Link>
